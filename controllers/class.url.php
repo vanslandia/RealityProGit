@@ -1,0 +1,78 @@
+<?php
+
+class URLs {
+	function LimpiarVariables($cadena){
+	$cadena = strip_tags($cadena);
+	return $cadena;
+}
+
+function makeLink($cadena){
+    $separador = "-";
+    $cadena = str_replace('a­', 'i', $cadena );
+    $cadena = str_replace('Ã­', 'i', $cadena );
+    $cadena = str_replace('ã±', 'n', $cadena );
+    $cadena = str_replace('Ã±', 'n', $cadena );
+    $cadena = str_replace('Ã¡', 'a', $cadena );
+    $cadena = str_replace('ã©', 'e', $cadena );
+    $cadena = str_replace('Ã©', 'e', $cadena );
+    $cadena = str_replace('ã³', 'o', $cadena );
+    $cadena = str_replace('Ã³', 'o', $cadena );
+    $cadena = str_replace('ãº', 'u', $cadena );
+    $cadena = str_replace('Ãº', 'u', $cadena );
+    $cadena = str_replace('ã', 'a', $cadena );
+    $cadena = str_replace('Ã', 'a', $cadena );
+
+    $cadena = strtolower(strtr($cadena, "áéíóúñÁÉÍÓÚÑ-.", "aeiounaeioun  "));  
+
+    $cadena = strtolower($cadena);
+    $cadena = trim(str_replace("[^ A-Za-z0-9]", "", $cadena));
+    $cadena = str_replace("[ \t\n\r]+ ", $separador, $cadena);
+	  $cadena = strtr($cadena, ",<>'-.;:«»`()¿?!¡{}[]/=","                       "); 
+  	$cadena = str_replace('"','', $cadena);
+  	$cadena = str_replace('  ',' ', $cadena);  
+  	$cadena = str_replace(' ','-', $cadena);  
+  	$cadena = strtr($cadena, "üâäö", "uaao");
+	  $cadena = str_replace(' ', '-', $cadena );
+    return $cadena; 
+}
+
+function unMakeLink($texto){
+	$texto = rtrim($texto, '/');
+	$texto = strip_tags($texto);
+	$texto = str_replace('-', " ", $texto);	
+	return $texto;
+}
+
+function LimpiarForm($texto){
+	$texto = strip_tags($texto);
+	$texto = htmlentities(utf8_decode($texto));
+	return $texto;
+}
+
+function QuitarAcento($cadena){
+$tofind = "ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ";
+$replac = "AAAAAAaaaaaaOOOOOOooooooEEEEeeeeCcIIIIiiiiUUUUuuuuyNn";
+return(strtr(utf8_decode($cadena),$tofind,$replac));
+}
+function AcentosAsHTML($s) { 
+   $s = str_replace("&aacute;","á",$s); 
+   $s = str_replace("&iacute;","í",$s); 
+   $s = str_replace("&eacute;","é",$s); 
+   $s = str_replace("&oacute;","ó",$s); 
+   $s = str_replace("&uacute;","ú",$s);
+   $s = str_replace("&ntilde;","ñ",$s); 
+   return $s; 
+} 
+
+function AcentosAsPuntuacion($s) { 
+   $s = str_replace("á","&aacute;",$s); 
+   $s = str_replace("í","&iacute;",$s); 
+   $s = str_replace("é","&eacute;",$s); 
+   $s = str_replace("ó","&oacute;",$s); 
+   $s = str_replace("ú","&uacute;",$s);
+   $s = str_replace("ñ","&ntilde;",$s); 
+   return $s; 
+}
+
+}
+?>

@@ -1,0 +1,23 @@
+
+
+====== Conceptos calves de GIT
+
+Workiing directory   ( donde trabajar )
+
+Staging area         ( donde se prepara el listado)
+
+Repository			 ( donde ya se subio )
+
+
+====== Commands
+
+git init    (Crear proyecto nuevo)
+git add     (Pasar archivos a Staging)
+git status  (Ver estatus los archivos y donde estan)
+git commit  (Pasa de staging area > repository)
+git push    (Subir a un repository)
+git pull    (trae los cambios de todos los demas)
+git clone   (copia del server a tu maquina)
+
+
+
