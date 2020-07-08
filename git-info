@@ -20,4 +20,8 @@ git pull    (trae los cambios de todos los demas)
 git clone   (copia del server a tu maquina)
 
 
+git config --global user.email "ivannss@msn.com"
+git config --global user.name "vanss"
+git log     diferenciar las versiones
+:wq   para cerrar el vim (editor)
 
